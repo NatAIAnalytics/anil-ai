@@ -1,6 +1,6 @@
 # 🧠 Anil — Agente de IA para FP&A y BI de Nuvora
 
-**Anil** es un agente financiero inteligente construido como proyecto de portafolio. Responde preguntas sobre nómina, presupuesto, cuentas por pagar, conciliación bancaria y ventas de **Nuvora**, una tienda en línea ficticia — usando siempre datos reales de una base de datos, nunca cifras inventadas.
+**Anil** es un agente financiero inteligente construido como proyecto de portafolio. Responde preguntas sobre nómina, presupuesto, cuentas por pagar, conciliación bancaria y ventas de **Nuvora**, una tienda en línea ficticia — consultando siempre la base de datos del proyecto antes de responder, en lugar de inventar cifras sobre la marcha.
 
 > Antes de armar el reporte, antes de la reunión, antes de la duda que te quita el sueño: Anil te da la cifra exacta en segundos.
 
@@ -43,6 +43,15 @@ anil-ai/
 ├── requirements.txt
 └── .gitignore
 ```
+
+## 🗂️ Sobre los datos
+
+Los datos de Nuvora combinan dos fuentes:
+
+- **Ventas**: derivados de una muestra real del dataset público [Amazon Sale Report](https://www.kaggle.com/datasets/thedevastator/unlock-profits-with-e-commerce-sales-data) (Kaggle, ventas de e-commerce de moda, India, 2022), usado aquí únicamente con fines educativos/portafolio. Se excluyeron pedidos cancelados, el canal de venta se reemplazó por uno genérico ("Tienda en Línea"), las categorías se tradujeron al español, los montos se reescalaron y las fechas se desplazaron a 2026 para alinearlas con el resto del proyecto. Este proyecto no está afiliado ni representa a Amazon ni a ninguna otra marca real.
+- **Empleados, nómina, presupuesto, cuentas por pagar y conciliación bancaria**: datos sintéticos y ficticios, creados específicamente para este proyecto de portafolio. No representan ninguna empresa real.
+
+El detalle completo de cada tabla y sus transformaciones está documentado como comentarios dentro de `data/seed_data.sql`.
 
 ## 🚀 Cómo correrlo localmente
 
