@@ -1,0 +1,15 @@
+# Variables de entorno (contiene tu API key real)
+.env
+
+# Entorno virtual
+venv/
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Base de datos generada localmente
+data/*.db
+
+# Archivos del sistema
+.DS_Store

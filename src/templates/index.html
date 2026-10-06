@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anil · Nuvora</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='nuvora-logo.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="{{ url_for('static', filename='nuvora-logo.png') }}" alt="Nuvora" class="brand-logo">
+        <p class="brand-tagline">Tu copiloto financiero, siempre a la mano.</p>
+        <p class="brand-sub">Anil · el agente de FP&amp;A y BI de Nuvora</p>
+      </div>
+
+      <button id="reset-btn" class="reset-btn">🔄 Nueva conversación</button>
+
+      <div class="sidebar-section">
+        <p class="sidebar-title">Preguntas frecuentes</p>
+        <button class="suggestion" data-q="¿Cuánto llevamos gastado en nómina este mes?">🧾 ¿Cuánto llevamos gastado en nómina este mes?</button>
+        <button class="suggestion" data-q="¿Cómo va el presupuesto de marketing frente a lo real?">📊 ¿Cómo va el presupuesto de marketing frente a lo real?</button>
+        <button class="suggestion" data-q="¿Hay facturas por pagar vencidas?">💸 ¿Hay facturas por pagar vencidas?</button>
+        <button class="suggestion" data-q="¿La conciliación bancaria tiene discrepancias?">🏦 ¿La conciliación bancaria tiene discrepancias?</button>
+        <button class="suggestion" data-q="¿Cómo van las ventas por categoría?">🛒 ¿Cómo van las ventas por categoría?</button>
+      </div>
+    </aside>
+
+    <main class="chat">
+      <div id="messages" class="messages"></div>
+      <form id="chat-form" class="chat-form">
+        <input id="message-input" type="text" placeholder="Escríbele a Anil..." autocomplete="off">
+        <button id="mic-btn" type="button" title="Hablar con Anil">🎤</button>
+        <button id="send-btn" type="submit">Enviar</button>
+      </form>
+    </main>
+
+    <aside id="drawer" class="drawer">
+      <div class="drawer-header">
+        <h2 id="drawer-title">Resumen</h2>
+        <button id="drawer-close" class="drawer-close">✕</button>
+      </div>
+      <div id="drawer-content" class="drawer-content">
+        <!-- Resumen -->
+        <div id="drawer-resumen" class="drawer-panel">
+          <div id="resumen-kpis" class="kpi-grid">Cargando...</div>
+        </div>
+
+        <!-- Gráficas -->
+        <div id="drawer-graficas" class="drawer-panel">
+          <div class="chart-box">
+            <p class="chart-title">Presupuesto vs. Real por mes</p>
+            <canvas id="chart-presupuesto"></canvas>
+          </div>
+          <div class="chart-box">
+            <p class="chart-title">Nómina por área</p>
+            <canvas id="chart-nomina"></canvas>
+          </div>
+          <div class="chart-box">
+            <p class="chart-title">Ventas por categoría</p>
+            <canvas id="chart-ventas"></canvas>
+          </div>
+          <div class="chart-box">
+            <p class="chart-title">Cuentas por pagar</p>
+            <canvas id="chart-cxp"></canvas>
+          </div>
+        </div>
+
+        <!-- Acerca de -->
+        <div id="drawer-acerca" class="drawer-panel">
+          <p><strong>Antes de armar el reporte, antes de la reunión, antes de la duda que te quita el sueño:</strong> Anil te da la cifra exacta en segundos, directo desde la base de datos de Nuvora.</p>
+          <p>Nuvora es una tienda en línea ficticia creada como proyecto de portafolio en FP&amp;A y BI. Anil es su agente inteligente: responde preguntas sobre nómina, presupuesto, cuentas por pagar, conciliación bancaria y ventas usando datos reales de la empresa — nunca inventa cifras, siempre consulta la base de datos antes de responder.</p>
+        </div>
+
+        <!-- Configuración -->
+        <div id="drawer-config" class="drawer-panel">
+          <div id="config-info">Cargando...</div>
+        </div>
+      </div>
+    </aside>
+
+    <nav class="icon-rail">
+      <button class="icon-btn active" data-view="inicio" title="Inicio">🏠</button>
+      <button class="icon-btn" data-view="resumen" title="Resumen">📊</button>
+      <button class="icon-btn" data-view="graficas" title="Gráficas">📈</button>
+      <button class="icon-btn" data-view="acerca" title="Acerca de">ℹ️</button>
+      <button class="icon-btn" data-view="config" title="Configuración">⚙️</button>
+    </nav>
+
+  </div>
+
+  <div id="chart-modal" class="chart-modal">
+    <div class="chart-modal-content">
+      <button id="chart-modal-close" class="chart-modal-close">✕</button>
+      <h3 id="chart-modal-title"></h3>
+      <canvas id="chart-modal-canvas"></canvas>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
